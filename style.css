@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ced3df;
+  text-align: center;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.list {
+  width: 400px;
+  margin: auto;
+  background-color: #f1f0f7;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.header {
+  padding: 8px 0;
+  background: rgb(238,174,202);
+  background: linear-gradient(90deg, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
+  border-radius: 20px 20px 0 0;
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+}
+
+.textInput {
+  position: relative;
+  padding: 8px;
+}
+
+.textInput__input {
+  display: block;
+  padding-right: 24px;
+  width: 95%;
+  height: 32px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  
+}
+
+.textInput__btn {
+  position: absolute;
+  right: 4px;
+  top: 5px;
+  width: 38px;
+  height: 38px;
+  font-size: 20px;
+  background-color: #e0e3e7;
+  border-radius: 50%;
+}
+
+
+.items {
+  height: 600px;
+}
+
+.item__row {
+  width: 95%;
+  background-color: white;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+}
+
+.btn__divider {
+  margin: 5px;
+  height: 80%;
+  width: 1px;
+  background-color: black;
+}
+
+.item__delete {
+  font-size: 16px;
+}
+
+.item__delete:hover {
+  transform: scale(1.15);
+  color: red;
+}
+
+.item__check {
+  font-size: 18px;
+}
+
+.item__check:hover {
+  transform: scale(1.15);
+  color: green;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
