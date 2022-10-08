@@ -4,9 +4,11 @@ const items = document.querySelector('.items');
 
 function onAdd() {
   const text = input.value;
-
+  if (text === '') {
+    input.focus();
+    return;
+  }
   const item = createItem(text);
-
   items.appendChild(item);
   item.scrollIntoView({ block : 'center'});
   input.value = '';
