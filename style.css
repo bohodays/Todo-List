@@ -70,7 +70,8 @@ ul {
 
 
 .items {
-  height: 600px;
+  height: 550px;
+  overflow-y: auto;
 }
 
 .item__row {
@@ -95,12 +96,13 @@ ul {
 .btn__divider {
   margin: 5px;
   height: 80%;
-  width: 1px;
-  background-color: black;
+  width: 2px;
+  background-color: darkgrey;
 }
 
 .item__delete {
   font-size: 16px;
+  transition: all 300ms ease;
 }
 
 .item__delete:hover {
@@ -110,6 +112,7 @@ ul {
 
 .item__check {
   font-size: 18px;
+  transition: all 300ms ease;
 }
 
 .item__check:hover {
@@ -119,4 +122,40 @@ ul {
 
 .line-through {
   text-decoration: line-through;
+}
+
+.all-delete {
+  padding: 18px;
+  background: rgb(238,174,202);
+  background: linear-gradient(90deg, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
+  border-radius: 0 0 20px 20px;
+}
+
+@keyframes shakeIt{
+  0%, 50%{
+    transform: rotate(0deg);
+  }
+  5%, 15%, 25%, 35%, 45% {
+    transform: rotate(2deg);
+  }
+  10%, 20%, 30%, 40% {
+    transform: rotate(-2deg);
+  }
+}
+
+.all-delete__button {
+  background-color: #f79698;
+  width: 140px;
+  height: 32px;
+  border-radius: 20px;
+}
+
+.all-delete__button:hover {
+  animation-name: shakeIt;
+  animation-duration: 3000ms;
+}
+
+.all-delete__title {
+  font-size: 16px;
+  color: white;
 }
