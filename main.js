@@ -15,43 +15,27 @@ function onAdd() {
   input.focus();
 };
 
+let id = 0;
 function createItem(text) {
   const itemRow = document.createElement('li');
   itemRow.setAttribute('class', 'item__row');
-
-  const item = document.createElement('div');
-  item.setAttribute('class', 'item')
-  itemRow.appendChild(item);
-  
-  const name = document.createElement('span');
-  name.setAttribute('class', 'item__name');
-  name.innerText = text;
-  item.appendChild(name);
-  
-  const btns = document.createElement('div');
-  btns.setAttribute('class', 'btns');
-  item.appendChild(btns);
-
-  const deleteBtn = document.createElement('button');
-  deleteBtn.setAttribute('class', 'item__delete');
-  btns.appendChild(deleteBtn);
-  deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-  deleteBtn.addEventListener('click', () => {
-    items.removeChild(itemRow);
-  });
-
-  const divider = document.createElement('div');
-  divider.setAttribute('class', 'btn__divider');
-  btns.appendChild(divider);
-
-  const checkBtn = document.createElement('button');
-  checkBtn.setAttribute('class', 'item__check');
-  btns.appendChild(checkBtn);
-  checkBtn.innerHTML = '<i class="fa-regular fa-circle-check"></i>';
-  checkBtn.addEventListener('click', () => {
-    name.classList.toggle('line-through');
-  })
-
+  itemRow.setAttribute('data-id', id);
+  itemRow.innerHTML = `
+      <div class="item">
+        <span class="item__name" data-id=${id}>${text}</span>
+        <div class="btns">
+          <button class="item__delete">
+            <i class="fa-solid fa-trash-can delete__icon" data-id=${id}></i>
+          </button>
+          <div class="btn__divider">
+          </div>
+          <button class="item__check">
+            <i class="fa-regular fa-circle-check check__icon" data-id=${id}></i>
+          </button>
+        </div>
+      </div>
+  `;
+  id++;
   return itemRow;
 };
 
@@ -70,3 +54,18 @@ const allDeleteBtn = document.querySelector('.all-delete__button');
 allDeleteBtn.addEventListener('click', () => {
   items.innerHTML = '';
 })
+
+// 이벤트 위임
+items.addEventListener('click', (event) => {
+  const id = event.target.dataset.id;
+  if (id) {
+    if (event.target.classList.contains('delete__icon')) {
+      const toBeDeleted = document.querySelector(`.item__row[data-id="${id}"]`);
+      toBeDeleted.remove();
+    } else if (event.target.classList.contains('check__icon')) {
+      const toBeLineThrough = document.querySelector(`.item__name[data-id="${id}"]`);
+      console.log(toBeLineThrough);
+      toBeLineThrough.classList.toggle('line-through');
+    }
+  }
+});
